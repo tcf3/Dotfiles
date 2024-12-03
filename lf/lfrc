@@ -1,0 +1,71 @@
+#
+# Basic Settings
+#
+
+set icons
+set hidden false
+set drawbox true
+set ignorecase true
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
+#
+# Bindings
+#
+
+# Remove some defaults
+map m
+map o
+map O
+map x
+map X
+map n
+map "'"
+map '"'
+map d
+map c
+map e
+map f
+map `
+map <enter>
+
+# Basic Functions
+map . set hidden!
+map DD delete
+map p paste
+map x cut
+map y copy
+map e $$EDITOR "$f"
+map r rename
+map R reload
+map c clear
+map U unselect
+
+#
+# Commands
+#
+
+# Make directory
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+map md mkdir
+
+# Make file
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  touch $ans
+}}
+
+map mf mkfile

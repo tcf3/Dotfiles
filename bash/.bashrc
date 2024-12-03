@@ -8,6 +8,9 @@ HISTFILESIZE=2000
 # Check window size after each command and update it if needed
 shopt -s checkwinsize
 
+# Setup vi mode
+#set -o vi
+
 # Prompt
 who=$(whoami)
 
@@ -15,13 +18,13 @@ if [ "${who}" == "root" ]; then
   PS1='╭─ \[\033[0;31m\]\h\[\033[00m\] (\[\033[01;34m\]\w\[\033[00m\])
 ╰─  '
   else
-  PS1='╭─ \[\033[01;32m\]\u\[\033[00m\] (\[\033[01;34m\]\w\[\033[00m\])
+  PS1='╭─ \[\033[01;32m\]\u\[\033[00m\] (\[\033[01;34m\]\w\[\033[00m\]) 
 ╰─  '
 fi
 
 # Source aliases
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # Bash autocomplete
@@ -35,3 +38,12 @@ fi
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Lf
+LFCD="~/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+  source "$LFCD"
+fi
+
+# Start or append tmux default session
+[ -z "$TMUX"  ] && { tmux attach -t local-shell || exec tmux new-session -s local-shell; }
