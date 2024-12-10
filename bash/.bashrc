@@ -27,7 +27,7 @@ NC='\033[0m' # No color
 
 # Prompt
 PS1='╭─ '${GREEN}'\u'${NC}' ('${BLUE}'\w'${NC}') 
-╰─'${RED}'$(__git_ps1 " (%s)")'${NC}'  '
+╰─  '
 
 # Source aliases
 if [ -f /Users/${WHO}/.bash_aliases ]; then
@@ -51,10 +51,9 @@ if [ -f /Users/${WHO}/.config/lf/lfcd.sh ]; then
   . /Users/${WHO}/.config/lf/lfcd.sh
 fi
 
-# Git prompt
-if [ -f /Users/${WHO}/.config/git-prompt.sh ]; then
-  . /Users/${WHO}/.config/git-prompt.sh
-fi
+# Add support for Alt
+bind '"\e[1;3D": backward-word'
+bind '"\e[1;3C": forward-word'
 
 # Start or append tmux default session
 [ -z "$TMUX"  ] && { tmux attach -t local-shell || exec tmux new-session -s local-shell; }

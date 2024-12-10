@@ -4,7 +4,8 @@ padding.y = 5
 opacity = 0.9
 blur = true
 decorations = "Full"
-option_as_alt = "Both"
+option_as_alt = "OnlyLeft"
+startup_mode = "Maximized"
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"
