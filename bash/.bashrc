@@ -56,4 +56,4 @@ bind '"\e[1;3D": backward-word'
 bind '"\e[1;3C": forward-word'
 
 # Start or append tmux default session
-[ -z "$TMUX"  ] && { tmux attach -t local-shell || exec tmux new-session -s local-shell; }
+#[ -z "$TMUX"  ] && { tmux attach -t local-shell || exec tmux new-session -s local-shell; }
