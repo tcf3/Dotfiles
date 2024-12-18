@@ -5,7 +5,7 @@ opacity = 0.9
 blur = true
 decorations = "Full"
 option_as_alt = "OnlyLeft"
-startup_mode = "Maximized"
+startup_mode = "Windowed"
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"

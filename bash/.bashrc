@@ -26,7 +26,7 @@ WHITE='\033[1;37m'
 NC='\033[0m' # No color
 
 # Prompt
-PS1='╭─ '${GREEN}'\u'${NC}' ('${BLUE}'\w'${NC}') 
+PS1='╭─ ['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') 
 ╰─  '
 
 # Source aliases
