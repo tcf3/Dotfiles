@@ -1,3 +1,7 @@
 # Dotfiles
 
-For prompt to work download [nerd fonts](https://www.nerdfonts.com/)
+## Dependencies
+
+* [Nerd Fonts](https://www.nerdfonts.com/)
+
+* Git Prompt: brew install git bash-git-prompt
