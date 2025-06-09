@@ -5,4 +5,5 @@ egrep='egrep --color=auto' \
 ls='ls --color=auto' \
 ll='ls -lF' \
 lsa='ls -laF' \
-lf='lfcd'
+lf='lfcd' \
+update='brew update && brew upgrade'
