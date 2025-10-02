@@ -1,0 +1,44 @@
+{
+  // VIM //
+  //"vim.leader": "<space>",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<Esc>" ],
+      "when": [ "editorFocus" ],
+      "commands": [ ":nohl" ],
+      "silent": true
+    }
+  ],
+  //"vim.visualModeKeyBindings": [
+  //  {
+  //    "before": ["p"],
+  //    "after": ["P"]
+  //  }
+  //],
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.surround": true,
+  "vim.highlightedyank.enable": true,
+  // EDITOR //
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontSize": 13,
+  "editor.fontLigatures": false,
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.insertSpaces": true,
+  "editor.minimap.enabled": false,
+  // WORKBENCH //
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.iconTheme": "material-icon-theme",
+  // GIT //
+  "git.enableSmartCommit": true,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "oneDarkPro.bold": true,
+  "oneDarkPro.vivid": true,
+}
