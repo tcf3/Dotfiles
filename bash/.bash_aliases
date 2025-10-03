@@ -6,4 +6,5 @@ ls='ls --color=auto' \
 ll='ls -lF' \
 lsa='ls -laF' \
 lf='lfcd' \
-update='brew update && brew outdated --greedy && brew upgrade --greedy && brew cleanup'
+cls='clear' \
+update='brew update && brew outdated --greedy && brew upgrade --greedy && brew cleanup' \
