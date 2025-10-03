@@ -67,6 +67,8 @@
   "oneDarkPro.bold": true,
   "oneDarkPro.vivid": true,
   "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
 
   // PYLANCE //
   "python.analysis.autoImportCompletions": true,
