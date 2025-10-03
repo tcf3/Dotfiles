@@ -1,58 +1,161 @@
-{
-  // VIM //
-  //"vim.leader": "<space>",
-  "vim.normalModeKeyBindingsNonRecursive": [
+[
+  // PANE MANAGEMENT //
+  {
+    "key": "ctrl-h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "ctrl-l",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl-k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "ctrl-j",
+    "command": "workbench.action.navigateDown"
+  },
+
+  // FZF //
+  {
+    "key": "space f f", // [F]ind [F]ile
+    "command": "workbench.action.quickOpen",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+  },
     {
-      "before": [ "<Esc>" ],
-      "when": [ "editorFocus" ],
-      "commands": [ ":nohl" ],
-      "silent": true
+    "key": "space f g", // [F]ind [G]rep,
+    "command": "workbench.action.findInFiles",
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus)"
+  },
+  {
+    "key": "space g d", // [G]o to [D]efinition
+    "command": "editor.action.revealDefinition",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g r", // [G]o to [R]eferences
+    "command": "editor.action.goToReferences",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space g i", // [G]o to [I]mplementation
+    "command": "editor.action.goToImplementation",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "[ d", // Prev diagnostics
+    "command": "editor.action.marker.prev",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "] d", // Next diagnostics
+    "command": "editor.action.marker.next",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+    {
+    "key": "space s", // [S]plit [S]ide
+    "command": "workbench.action.splitEditorRight",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "space v", // Split [V]ertically
+    "command": "workbench.action.splitEditorDown",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+  {
+    "key": "shift-k",
+    "command": "editor.action.showHover",
+    "when": "vim.mode == 'Normal' && editorTextFocus"
+  },
+
+  // BUFFERS //
+  {
+    "key": "cmd+w",
+    "command": "",
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor",
+  },
+
+  // FILE TREE //
+  {
+    "key": "space e",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.files.action.focusFilesExplorer"
+      ]
+    },
+    "when": "vim.mode == 'Normal' && (editorTextFocus || !inputFocus) && !sideBarFocus"
+  },
+  {
+    "key": "space e",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        "workbench.action.focusActiveEditorGroup"
+      ]
+    },
+    "when": "sideBarFocus && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "c",
+    "command": "filesExplorer.copy",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift-a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "s",
+    "command": "explorer.openToSide",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift-s",
+    "command": "runCommands",
+    "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus",
+    "args": {
+      "commands": [
+        "workbench.action.splitEditorDown",
+        "explorer.openAndPassFocus",
+        "workbench.action.closeOtherEditors"
+      ]
     }
-  ],
-  //"vim.visualModeKeyBindings": [
-  //  {
-  //    "before": ["p"],
-  //    "after": ["P"]
-  //  }
-  //],
-  "vim.incsearch": true,
-  "vim.hlsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.surround": true,
-  "vim.highlightedyank.enable": true,
-
-  // EDITOR //
-  "editor.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.fontSize": 13,
-  "editor.fontLigatures": false,
-  "editor.tabSize": 2,
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.insertSpaces": true,
-  "editor.minimap.enabled": false,
-  "editor.detectIndentation": false,
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": true
   },
-  "editor.suggestOnTriggerCharacters": true,
-
-  // WORKBENCH //
-  "workbench.startupEditor": "none",
-  "workbench.colorTheme": "One Dark Pro Darker",
-  "workbench.iconTheme": "material-icon-theme",
-
-  // PYLANCE //
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "strict",
-
-  // MISC //
-  "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
-  },
-  "oneDarkPro.bold": true,
-  "oneDarkPro.vivid": true,
-  "explorer.confirmDragAndDrop": false,
-}
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.triggerSuggest"
+  }
+]
