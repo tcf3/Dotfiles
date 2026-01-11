@@ -48,14 +48,16 @@ fi
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Lf
-if [ -f /Users/${WHO}/.config/lf/lfcd.sh ]; then
-  . /Users/${WHO}/.config/lf/lfcd.sh
-fi
-
-# Add support for Alt
+# Add support for Alt on MacOS
 bind '"\e[1;3D": backward-word'
 bind '"\e[1;3C": forward-word'
 
-# Start or append tmux default session
-#[ -z "$TMUX"  ] && { tmux attach -t local-shell || exec tmux new-session -s local-shell; }
+# Only run tmux in interactive shells
+case $- in
+  *i*)
+    [ -z "$TMUX" ] && {
+      SESSION_NAME="default"
+      tmux attach -t "$SESSION_NAME" 2>/dev/null || exec tmux new -s "$SESSION_NAME"
+    }
+    ;;
+esac

@@ -12,7 +12,7 @@ normal.family = "JetBrainsMono Nerd Font"
 size = 14
 
 [selection]
-save_to_clipboard = true
+save_to_clipboard = false
 
 # One Dark
 # Default colors
