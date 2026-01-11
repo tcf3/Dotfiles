@@ -25,9 +25,19 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No color
 
+# Detect if we're in Distrobox
+if [ -n "$CONTAINER_ID" ]; then
+  [[ $CONTAINER_ID == "arch" ]] && DISTROBOX_LABEL="${BLUE}󰣇${NC}"
+  [[ $CONTAINER_ID == "debian" ]] && DISTROBOX_LABEL="${RED}${NC}"
+  [[ $CONTAINER_ID == "fedora" ]] && DISTROBOX_LABEL="${BLUE}${NC}"
+else
+  DISTROBOX_LABEL=""
+fi
+
 # Prompt
-PS1='['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') 
+PS1='['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') '${DISTROBOX_LABEL}' 
   '
+
 #PS1='╭─ ['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') 
 #╰─  '
 
@@ -53,11 +63,11 @@ bind '"\e[1;3D": backward-word'
 bind '"\e[1;3C": forward-word'
 
 # Only run tmux in interactive shells
-case $- in
-  *i*)
-    [ -z "$TMUX" ] && {
-      SESSION_NAME="default"
-      tmux attach -t "$SESSION_NAME" 2>/dev/null || exec tmux new -s "$SESSION_NAME"
-    }
-    ;;
-esac
+#case $- in
+#  *i*)
+#    [ -z "$TMUX" ] && {
+#      SESSION_NAME="default"
+#      tmux attach -t "$SESSION_NAME" 2>/dev/null || exec tmux new -s "$SESSION_NAME"
+#    }
+#    ;;
+#esac

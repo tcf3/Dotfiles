@@ -7,4 +7,5 @@ ll='ls -lF' \
 lsa='ls -laF' \
 lf='lfcd' \
 cls='clear' \
+ds='distrobox' \
 update='brew update && brew outdated --greedy && brew upgrade --greedy && brew cleanup' \
