@@ -14,7 +14,10 @@ size = 14
 [selection]
 save_to_clipboard = false
 
-# One Dark
+[env]
+TERM = "xterm-256color"
+
+## One Dark ##
 # Default colors
 [colors.primary]
 background = '#282c34'
