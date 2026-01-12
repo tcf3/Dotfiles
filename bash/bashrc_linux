@@ -42,7 +42,7 @@ else
 fi
 
 # Prompt
-PS1='['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') '${DISTROBOX_LABEL}'
+PS1=''${GREEN}'\h'${NC}' ('${BLUE}'\w'${NC}') '${DISTROBOX_LABEL}'
   '
 
 # Source aliases
