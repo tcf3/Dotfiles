@@ -6,4 +6,5 @@ ls='ls --color=auto' \
 ll='ls -lF' \
 lsa='ls -laF' \
 update='brew update && brew outdated --greedy && brew upgrade --greedy && brew cleanup' \
-
+dbr='podman run -d --hostname devbox --name devbox -v ~/Documents/Code:/home/core/code -v ~/Documents/Git/Neovim:/home/core/.config/nvim devbox' \
+db='podman exec -it devbox bash'
