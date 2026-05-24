@@ -26,24 +26,26 @@ WHITE='\033[1;37m'
 NC='\033[0m' # No color
 
 # Prompt
-PS1='['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}')
-  '
+#PS1='['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}')
+#  '
 
-#PS1='╭─ ['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') 
-#╰─  '
+PS1='╭─ ['${GREEN}'\u@\h'${NC}'] ('${BLUE}'\w'${NC}') 
+╰─  '
 
 # Source aliases
 if [ -f /Users/${WHO}/.bash_aliases ]; then
   . /Users/${WHO}/.bash_aliases
 fi
 
-# Bash autocomplete
+# Autocomplete
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
   fi
+
+  for f in /opt/homebrew/etc/bash_completion.d/*; do
+    [ -r "$f" ] && source "$f"
+  done
 fi
 
 # Homebrew
@@ -52,3 +54,13 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Add support for Alt on MacOS
 bind '"\e[1;3D": backward-word'
 bind '"\e[1;3C": forward-word'
+
+# Only run tmux in interactive shells
+case $- in
+  *i*)
+    [ -z "$TMUX" ] && {
+      SESSION_NAME="default"
+      tmux attach -t "$SESSION_NAME" 2>/dev/null || exec tmux new -s "$SESSION_NAME"
+    }
+    ;;
+esac
